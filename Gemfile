@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.1.1'
+ruby '2.1.2'
 gem 'rails', '4.1.1'
 gem 'pg'
 gem 'sass-rails', '~> 4.0.3'
@@ -31,3 +31,4 @@ group :test do
   gem 'selenium-webdriver'
 end
 gem 'rspec-support', '3.0.2'
+gem 'blorgh', path: '../blorgh'
