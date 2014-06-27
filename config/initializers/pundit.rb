@@ -12,8 +12,9 @@ module PunditHelper
 
   private
 
-  def user_not_authorized
-    flash[:alert] = "Access denied."
+  def user_not_authorized(exception)
+    policy_name = exception.policy.class.to_s
+    flash[:alert] = "Access denied by #{policy_name} for #{exception.record} #{exception.query.chop}"
     redirect_to (request.referrer || root_path)
   end
 
