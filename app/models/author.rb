@@ -1,7 +1,7 @@
 class Author < ActiveRecord::Base
   
   def to_s
-    #name
+    name
   end
   
 end

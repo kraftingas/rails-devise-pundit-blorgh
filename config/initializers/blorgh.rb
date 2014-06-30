@@ -1,1 +1,0 @@
-Blorgh.author_class = "Author"
