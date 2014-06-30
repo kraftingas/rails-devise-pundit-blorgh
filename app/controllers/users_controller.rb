@@ -18,8 +18,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    #@users = policy_scope(User)
-    authorize @user
+    @users = policy_scope(Access)
+    #authorize @user
     #authorize Access
   end
 

@@ -15,9 +15,11 @@ class UserPolicy < AccessPolicy
   end
 
   def show?
-    unless @current_user.admin? or @current_user == @user
-      raise AuthorizationError, 'Access denied to user profile.'
-    end
+    #if @current_user.admin? or @current_user == @user
+      @current_user.admin? or @current_user == @user
+    #else
+      #raise AuthorizationError, 'Access denied to user profile.'
+    #end
     #true
   end
 
@@ -46,7 +48,8 @@ class UserPolicy < AccessPolicy
       if current_user.admin?
         model.all
       else
-        model.where(role: current_user.role)
+        #model.where(role: current_user.role)
+        model.where(email: current_user.email)
       end
     end
   end

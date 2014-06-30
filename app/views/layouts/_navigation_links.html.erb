@@ -10,6 +10,6 @@
   <% if current_user.admin? %>
   <%# if policy(User).index? %>
     <li><%= link_to 'Users', users_path %></li>
+    <li><%= link_to "Engine's Posts", blorgh.posts_path %></li>
   <% end %>
 <% end %>
-<li><%= link_to "Engine's Posts", blorgh.posts_path %></li>

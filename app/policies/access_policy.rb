@@ -36,4 +36,14 @@ class AccessPolicy
     false
   end
   
+  class Scope < Struct.new(:current_user, :model)
+    def resolve
+      if current_user.admin?
+        User.all
+      else
+        User.where(email: current_user.email)
+      end
+    end
+  end
+  
 end
