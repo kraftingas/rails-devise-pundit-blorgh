@@ -1,6 +1,6 @@
 <h1>Posts</h1>
 <% if user_signed_in? %>
-  <% if current_user.admin? %>
+  <% if current_user.admin? || current_user.vip? %>
     <%= link_to "New Post", new_post_path %>
   <% end %>
 <% end %>
@@ -16,9 +16,11 @@
   <br><br>
   <%= link_to 'Show', post %>
   <% if user_signed_in? %>
+    <% if current_user.vip? %>
+      | <%= link_to 'Edit', edit_post_path(post) %>
+    <% end %>
     <% if current_user.admin? %>
-      <%= link_to 'Edit', edit_post_path(post) %>
-      <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %>
+      | <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %>
     <% end %>
   <% end %>
   <hr>
