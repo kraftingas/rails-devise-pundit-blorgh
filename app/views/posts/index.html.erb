@@ -5,7 +5,7 @@
   <% end %>
 <% end %>
 <% @posts.each do |post| %>
-  <h2><%= post.title %></h2>
+  <h2><%= link_to post.title, post %></h2>
   <%= post.created_at %><br>
   <small>By <%= post.author %></small>
   <%= simple_format(post.text) %>
@@ -14,10 +14,10 @@
     <%= render post.comments %>
   </div>
   <br><br>
-  <%= link_to 'Show', post %>
+  <%# link_to 'Show', post %>
   <% if user_signed_in? %>
-    <% if current_user.vip? %>
-      | <%= link_to 'Edit', edit_post_path(post) %>
+    <% if current_user.admin? || current_user.vip? %>
+      <%= link_to 'Edit', edit_post_path(post) %>
     <% end %>
     <% if current_user.admin? %>
       | <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %>

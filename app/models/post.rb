@@ -1,5 +1,5 @@
 class Post < ActiveRecord::Base
-  LIMIT_DEFAULT = 10
+  LIMIT_DEFAULT = 20
   has_many :comments
   attr_accessor :author_name
   belongs_to :author, class_name: "Author"

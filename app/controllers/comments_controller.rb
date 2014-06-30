@@ -3,8 +3,14 @@ class CommentsController < ApplicationController
   def create
     @post = Post.find(params[:post_id])
     @comment = @post.comments.create(comment_params)
-    flash[:notice] = "Comment has been created!"
-    redirect_to posts_path
+    if @comment.to_s == ''
+      flash[:alert] = "Comment can't be blank!"
+      #redirect_to post_path(@post)
+    else
+      flash[:notice] = "Comment has been created!"
+      #redirect_to posts_path
+    end
+    redirect_to post_path(@post)
   end
  
   private
