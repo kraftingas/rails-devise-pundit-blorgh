@@ -5,12 +5,15 @@ class PostsController < ApplicationController
   # GET /posts.json
   def index
     #@posts = Post.all
-    @posts = Post.most_recent
+    @posts = Post.most_recent 
   end
 
   # GET /posts/1
   # GET /posts/1.json
   def show
+    @post = Post.find(params[:id])   
+    @previous = Post.where("id < ?", params[:id]).order(id: :desc).first   
+    @next = Post.where("id > ?", params[:id]).order(:id).first 
   end
 
   # GET /posts/new

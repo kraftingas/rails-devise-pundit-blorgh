@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
   enum role: [:user, :vip, :admin]
   after_initialize :set_default_role, :if => :new_record?
   #after_database_authentication :set_welcome_back
+  has_many :posts
 
   def set_default_role
     self.role ||= :user
@@ -12,7 +13,7 @@ class User < ActiveRecord::Base
   end
   
   def to_s
-    email
+    name
   end
 
   # Include default devise modules. Others available are:

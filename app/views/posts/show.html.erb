@@ -1,5 +1,6 @@
 <p id="notice"><%= notice %></p>
-
+<%= link_to "<< Previous", @previous if @previous.present? %> | <%= link_to "Next >>", @next if @next.present? %>
+<br><br>
 <p>
   <b>Author:</b>
   <%= @post.author %>

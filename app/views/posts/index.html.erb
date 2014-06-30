@@ -25,3 +25,5 @@
   <% end %>
   <hr>
 <% end %>
+<br><br>
+<%= link_to "<< Previous", @previous if @previous.present? %> | <%= link_to "Next >>", @next if @next.present? %>
