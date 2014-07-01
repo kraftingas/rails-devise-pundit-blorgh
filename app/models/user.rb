@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
   has_many :posts
 
   def set_default_role
-    self.role ||= :user
+    self.role ||= :vip
   end
   
   def set_welcome_back
