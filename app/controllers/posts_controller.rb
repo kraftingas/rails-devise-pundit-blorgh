@@ -5,15 +5,15 @@ class PostsController < ApplicationController
   # GET /posts.json
   def index
     #@posts = Post.all
-    @posts = Post.most_recent 
+    @posts = Post.most_recent
   end
 
   # GET /posts/1
   # GET /posts/1.json
   def show
-    @post = Post.find(params[:id])   
-    @previous = Post.where("id < ?", params[:id]).order(id: :desc).first   
-    @next = Post.where("id > ?", params[:id]).order(:id).first 
+    @post = Post.find(params[:id])
+    @previous = Post.where("id < ?", params[:id]).order(id: :desc).first
+    @next = Post.where("id > ?", params[:id]).order(:id).first
   end
 
   # GET /posts/new
@@ -32,7 +32,7 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       if @post.save
-        format.html { redirect_to @post, notice: 'Post was successfully created.' }
+        format.html { redirect_to @post , notice: 'Post was successfully created.' }
         format.json { render :show, status: :created, location: @post }
       else
         format.html { render :new }
@@ -73,6 +73,6 @@ class PostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:title, :text, :author_name)
+      params.require(:post).permit(:title, :text, :user_id)
     end
 end

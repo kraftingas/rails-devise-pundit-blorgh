@@ -16,7 +16,7 @@
   <br><br>
   <%# link_to 'Show', post %>
   <% if user_signed_in? %>
-    <% if current_user.admin? || current_user.vip? %>
+    <% if current_user.admin? || current_user.id == post.user_id %>
       <%= link_to 'Edit', edit_post_path(post) %>
     <% end %>
     <% if current_user.admin? %>
