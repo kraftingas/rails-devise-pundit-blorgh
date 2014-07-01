@@ -4,3 +4,4 @@
 <p>Role: <%= @user.role.upcase if @user.role %></p>
 <p>Last sign in at: <%= @user.last_sign_in_at if @user.last_sign_in_at %></p>
 <p>Last sign in from: <%= @user.last_sign_in_ip if @user.last_sign_in_ip %></p>
+<div><%= render 'posts/user_posts' %></div>

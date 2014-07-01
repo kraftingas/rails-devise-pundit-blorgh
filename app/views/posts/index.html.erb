@@ -7,7 +7,7 @@
 <% @posts.each do |post| %>
   <h2><%= link_to post.title, post %></h2>
   <%= post.created_at %><br>
-  <small>By <%= post.author %></small>
+  <small>By <%= link_to post.author, post.user %></small>
   <%= simple_format(post.text) %>
   <div>
     <h3>Comments</h3>
