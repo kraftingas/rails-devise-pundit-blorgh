@@ -13,5 +13,6 @@
     <%= f.label :text %><br>
     <%= f.text_area :text %>
   </p>
+  <%= f.hidden_field :commenter_ip, value: request.remote_ip %>
   <%= f.submit %>
 <% end %>

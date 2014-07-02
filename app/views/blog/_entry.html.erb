@@ -18,7 +18,7 @@
   <%= entry.render_body(self) %>
   <p>
     <% full_comment = '' %>
-  <h3><%= link_to "#{entry_size} comment#{ if entry_size != 1 then 's' end }", entry %></h3>
+  <h3><%= link_to "#{ entry_size } comment#{ if entry_size != 1 then 's' end }", entry %></h3>
   </p>
   <% if user_signed_in? %>
     <% if current_user.admin? || current_user.id == entry.user_id %>
