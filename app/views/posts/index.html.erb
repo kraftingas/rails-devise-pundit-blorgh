@@ -9,6 +9,10 @@
   <%= post.created_at %><br>
   <small>By <%= link_to post.author, post.user %></small>
   <%= simple_format(post.text) %>
+  <p>
+    <strong></strong>
+    <%= image_tag(post.image_url, size: "150x150") %>
+  </p>
   <div>
     <h3>Comments</h3>
     <%= render post.comments %>
