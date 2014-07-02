@@ -52,6 +52,12 @@ section {
   max-width: 320px;
   margin: 0 auto;
 }
+.authform_body {
+  //@extend .text-center;
+  padding-top: 30px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
 .authform form {
   @extend .well;
   @extend .well-lg;

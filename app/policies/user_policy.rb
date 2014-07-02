@@ -34,9 +34,9 @@ class UserPolicy < AccessPolicy
   
   def permitted_attributes
     if @current_user.admin?
-      [:role]
+      [:role, :avatar]
     else
-      [:name, :email]
+      [:name, :email, :avatar]
     end
   end
   

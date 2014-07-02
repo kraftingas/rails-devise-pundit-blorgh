@@ -32,3 +32,4 @@ group :test do
 end
 gem 'rspec-support', '3.0.2'
 # gem 'blorgh', path: 'vendor/engines/blorgh'
+gem "paperclip", "~> 4.1"

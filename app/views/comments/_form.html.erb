@@ -1,18 +1,20 @@
+<div class="authform">
 <br><strong>New comment</strong>
 <%= form_for [@post, @post.comments.build] do |f| %>
-  <p>
+  <p class="form-group">
     <% if user_signed_in? %>
-      <%= f.label :commenter %>: <%= current_user %><br>
+      <%= f.label :commenter, "Name" %>: <%= current_user %><br>
       <%= f.hidden_field :commenter, value: current_user %>
     <% else %>
-      <%= f.label :commenter %><br>
-      <%= f.text_field :commenter%>
+      <%= f.label :commenter, "Name" %><br>
+      <%= f.text_field :commenter, class: 'form-control' %>
     <% end %>
   </p>
-  <p>
+  <p class="form-group">
     <%= f.label :text %><br>
-    <%= f.text_area :text %>
+    <%= f.text_area :text, class: 'form-control' %>
   </p>
   <%= f.hidden_field :commenter_ip, value: request.remote_ip %>
-  <%= f.submit %>
+  <%= f.submit 'Create Comment', class: 'button right' %>
 <% end %>
+</div>
