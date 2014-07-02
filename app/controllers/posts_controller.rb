@@ -1,24 +1,27 @@
 class PostsController < ApplicationController
+  respond_to :html, :json
   before_action :set_post, only: [:show, :edit, :update, :destroy]
 
   # GET /posts
   # GET /posts.json
   def index
-    #@posts = Post.all
+    @posts = Post.all
     @posts = Post.most_recent
   end
 
   # GET /posts/1
   # GET /posts/1.json
   def show
-    @post = Post.find(params[:id])
+    #@post = Post.find(params[:id])
+    @post = exhibit(blog.post(params[:id]), self)
+    respond_with(@post)
     @previous = Post.where("id < ?", params[:id]).order(id: :desc).first
-    @next = Post.where("id > ?", params[:id]).order(:id).first
+    @next =  Post.where("id > ?", params[:id]).order(:id).first
   end
 
   # GET /posts/new
   def new
-    @post = Post.new
+    @post = blog.new_post
   end
 
   # GET /posts/1/edit
@@ -28,10 +31,12 @@ class PostsController < ApplicationController
   # POST /posts
   # POST /posts.json
   def create
-    @post = Post.new(post_params)
+    #@post = Post.new(post_params)
+    @post = Taggable(blog).new_post(post_params)
 
     respond_to do |format|
-      if @post.save
+      #if @post.save
+      if @post.publish
         format.html { redirect_to @post , notice: 'Post was successfully created.' }
         format.json { render :show, status: :created, location: @post }
       else
@@ -66,6 +71,10 @@ class PostsController < ApplicationController
   end
 
   private
+  
+    attr_reader :post
+    helper_method :post
+  
     # Use callbacks to share common setup or constraints between actions.
     def set_post
       @post = Post.find(params[:id])
@@ -73,6 +82,7 @@ class PostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:title, :text, :user_id, :image_url)
+      params.require(:post).permit(:title, :text, :user_id, :image_url, :tags)
     end
+  
 end

@@ -1,6 +1,15 @@
 <br><strong>New comment</strong>
 <%= form_for [@post, @post.comments.build] do |f| %>
   <p>
+    <% if user_signed_in? %>
+      <%= f.label :commenter %>: <%= current_user %><br>
+      <%= f.hidden_field :commenter, value: current_user %>
+    <% else %>
+      <%= f.label :commenter %><br>
+      <%= f.text_field :commenter%>
+    <% end %>
+  </p>
+  <p>
     <%= f.label :text %><br>
     <%= f.text_area :text %>
   </p>

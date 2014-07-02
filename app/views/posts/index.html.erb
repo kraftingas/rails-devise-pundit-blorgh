@@ -4,6 +4,7 @@
     <%= link_to "New Post", new_post_path %>
   <% end %>
 <% end %>
+<br>
 <% @posts.each do |post| %>
   <h2><%= link_to post.title, post %></h2>
   <%= post.created_at %><br>
@@ -11,11 +12,13 @@
   <%= simple_format(post.text) %>
   <p>
     <strong></strong>
-    <%= image_tag(post.image_url, size: "150x150") %>
+    <%= image_tag(post.image_url, size: "250x250") %>
   </p>
   <div>
-    <h3>Comments</h3>
-    <%= render post.comments %>
+    <% if post.comments.size != 0 %>
+      <h3>Comments</h3>
+      <%= render post.comments %>
+    <% end %>
   </div>
   <br><br>
   <%# link_to 'Show', post %>

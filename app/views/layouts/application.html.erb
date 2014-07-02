@@ -15,6 +15,13 @@
     <main role="main">
        <%= render 'layouts/messages' %>
        <%= yield %>
+      <h4>Tags</h4>
+      <nav>
+        <ul>
+          <%# render partial: "/tags/tag_item", collection: @blog.entries %>
+          <!-- vietoj @blog.entries turi buti @blog.tags -->
+        </ul>
+      </nav>
     </main>
   </body>
 </html>

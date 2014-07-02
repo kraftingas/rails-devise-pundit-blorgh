@@ -1,0 +1,32 @@
+<% entry = exhibit(entry, self) %>
+<% entry_size = entry.comments.size %>
+<article>
+  <header>
+    <h2><%= link_to entry.title, entry %></h2>
+    <%= entry.created_at %><br>
+    <small>By <%= link_to entry.author, entry.user %></small>
+    <%# simple_format(entry.text) 
+%>
+    
+    <p class="entry_tags"><b>Tags:</b>
+      <!-- Taggable(entry).tags -->
+      <span class="tags"><%# Taggable(entry).tags 
+%></span>
+    </p>
+  </header>
+  <!--<p><%# entry.body %></p>-->
+  <%= entry.render_body(self) %>
+  <p>
+    <% full_comment = '' %>
+  <h3><%= link_to "#{entry_size} comment#{ if entry_size != 1 then 's' end }", entry %></h3>
+  </p>
+  <% if user_signed_in? %>
+    <% if current_user.admin? || current_user.id == entry.user_id %>
+      <%= link_to 'Edit', edit_post_path(entry) %>
+    <% end %>
+    <% if current_user.admin? %>
+      | <%= link_to 'Destroy', entry, method: :delete, data: { confirm: 'Are you sure?' } %>
+    <% end %>
+  <% end %>
+  <hr>
+</article>

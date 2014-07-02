@@ -5,6 +5,7 @@ class Post < ActiveRecord::Base
   belongs_to :user #, class_name: "User"
   validates :title, presence: true
   #Blorgh.author_class.to_s
+  attr_accessor :blog
     
   #before_save :set_author
   
@@ -12,8 +13,43 @@ class Post < ActiveRecord::Base
     User.select(:name).find_by(id: user_id)
   end
     
+  def publish
+    #clock=DateTime.now
+    return false unless valid?
+    #self.pubdate = clock
+    blog.add_entry(self)
+  end
+  
   def self.most_recent(limit=LIMIT_DEFAULT)
     order("created_at DESC").limit(limit)
+  end
+  
+  def self.first_before(date)
+    first(conditions: ["created_at < ?", date], order: "created_at DESC")
+  end
+  
+  def self.first_after(date)
+    first(conditions: ["created_at < ?", date], order: "created_at ASC")
+  end
+  
+  def picture?
+    image_url.present?
+  end
+  
+  def prev
+    self.class.first_before(created_at)
+  end
+    
+  def next
+    self.class.first_after(created_at)
+  end
+      
+  def up
+    blog
+  end
+    
+  def to_s
+    title
   end
     
   private
@@ -25,4 +61,5 @@ class Post < ActiveRecord::Base
     #self.author = User.find_by(id: current_user.id)
     #self.author_name = 2
   end
+  
 end
