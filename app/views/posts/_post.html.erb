@@ -17,9 +17,16 @@
   </header>
   <!--<p><%# post.body %></p>-->
   <%= post.render_body(self) %>
-  <p>
+  <p id="comments_block">
     <h3>Comments</h3>
-    <%= render post.comments %>
+    <%= button_tag "Oldest", {id: 'oldest_button', class: "button-xs active", onclick: "oldest();"} %>
+    <%= button_tag "Newest", {id: 'newest_button', class: "button-xs", onclick: "newest();"} %>
+    <br><br>
+    <%# link_to "Add tester", add_post_comments_path, remote: true 
+%>
+    <div id="tester"></div>
+    <div id="oldest_comments"><%= render post.comments.oldest %></div>
+    <div id="newest_comments" class="comments"><%= render post.comments.newest %></div>
     <%= render "comments/form" %>
   </p>
   <% if user_signed_in? %>

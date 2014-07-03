@@ -15,6 +15,10 @@ class Comment < ActiveRecord::Base
     order("created_at")
   end
   
+  def self.newest
+    order("created_at DESC")
+  end
+  
   def hide_comment
     flash[:notice] = 'Comment was successfully destroyed.'
   end

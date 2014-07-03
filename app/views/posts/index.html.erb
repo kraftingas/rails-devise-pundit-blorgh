@@ -17,7 +17,7 @@
   <div>
     <% if post.comments.size != 0 %>
       <h3>Comments</h3>
-      <%= render post.comments %>
+      <%= render post.comments.oldest %>
     <% end %>
   </div>
   <br><br>
