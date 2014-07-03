@@ -15,6 +15,7 @@
     <%= f.text_area :text, class: 'form-control' %>
   </p>
   <%= f.hidden_field :commenter_ip, value: request.remote_ip %>
+  <%= f.hidden_field :commenter_id, value: current_user.id %>
   <%= f.submit 'Create Comment', class: 'button right' %>
 <% end %>
 </div>

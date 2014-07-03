@@ -9,10 +9,10 @@
   <h2><%= link_to post.title, post %></h2>
   <%= post.created_at %><br>
   <small>By <%= link_to post.author, post.user %></small>
-  <%= simple_format(post.text) %>
+<%= simple_format(post.text) if post.text.present? %>
   <p>
     <strong></strong>
-    <%= image_tag(post.image_url, size: "250x250") %>
+    <%= image_tag(post.image_url, size: "250x250") if post.image_url.present? %>
   </p>
   <div>
     <% if post.comments.size != 0 %>

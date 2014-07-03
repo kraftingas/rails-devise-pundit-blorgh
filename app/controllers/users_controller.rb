@@ -18,9 +18,10 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @users = policy_scope(Access)
+    #@users = policy_scope(Access)
     @posts = Post.where(user_id: @user.id).order(:id)
     #authorize @user
+    @user_comments = @user.user_comments(@user).size
     #authorize Access
   end
 

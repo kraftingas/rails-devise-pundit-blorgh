@@ -1,12 +1,17 @@
-<h3>User</h3>
+<h3><%= @user.name if @user.name %></h3>
 <div>
-  <%= image_tag @user.avatar.url %>
-  <%= image_tag @user.avatar.url(:medium) %>
-  <%= image_tag @user.avatar.url(:thumb) %>
+  <% image_tag @user.avatar.url %>
+  <% image_tag @user.avatar.url(:medium) %>
+  <% image_tag @user.avatar.url(:thumb) %>
 </div>
-<p>Name: <%= @user.name if @user.name %></p>
+<!--<p>Name: <%# @user.name if @user.name %></p>-->
 <!--<p>Email: <% @user.email if @user.email %></p>
 <p>Role: <% @user.role.upcase if @user.role %></p>-->
 <p>Last sign in at: <%= @user.last_sign_in_at if @user.last_sign_in_at %></p>
+<br>
+<p>Number of comments: <%= @user_comments %></p>
 <!--<p>Last sign in from: <% @user.last_sign_in_ip if @user.last_sign_in_ip %></p>-->
 <div><%= render 'posts/user_posts' %></div>
+<div><%# render '' 
+%></div>
+<br><br>

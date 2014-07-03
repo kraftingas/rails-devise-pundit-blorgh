@@ -1,6 +1,6 @@
 class Comment < ActiveRecord::Base
   belongs_to :post
-  validates :text, :commenter_ip, presence: true
+  validates :text, presence: true
   before_validation :set_default_commenter
   
   #def initialize
@@ -13,10 +13,6 @@ class Comment < ActiveRecord::Base
   
   def self.oldest
     order("created_at")
-  end
-  
-  def update_metadata(options = {})
-    self.update_attributes(options)
   end
   
   private
