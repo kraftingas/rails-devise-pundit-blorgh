@@ -24,12 +24,14 @@ class Post < ActiveRecord::Base
     order("created_at DESC").limit(limit)
   end
   
-  def self.first_before(date)
-    first(conditions: ["created_at < ?", date], order: "created_at DESC")
+  def self.first_before(id)
+    #where("created_at < ?", date).order("created_at DESC").first
+    Post.where("id < ?", id).order(id: :desc).first
   end
   
-  def self.first_after(date)
-    first(conditions: ["created_at < ?", date], order: "created_at ASC")
+  def self.first_after(id)
+    #where("created_at < ?", date).order("created_at ASC").first
+    Post.where("id > ?", id).order(:id).first
   end
   
   def picture?
@@ -37,11 +39,11 @@ class Post < ActiveRecord::Base
   end
   
   def prev
-    self.class.first_before(created_at)
+    self.class.first_before(id)
   end
     
   def next
-    self.class.first_after(created_at)
+    self.class.first_after(id)
   end
       
   def up

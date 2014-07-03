@@ -15,8 +15,8 @@ class PostsController < ApplicationController
     #@post = Post.find(params[:id])
     @post = exhibit(blog.post(params[:id]), self)
     respond_with(@post)
-    @previous = Post.where("id < ?", params[:id]).order(id: :desc).first
-    @next =  Post.where("id > ?", params[:id]).order(:id).first
+    #@previous = Post.where("id < ?", params[:id]).order(id: :desc).first
+    #@next = Post.where("id > ?", params[:id]).order(:id).first
   end
 
   # GET /posts/new
