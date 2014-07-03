@@ -12,6 +12,17 @@ class CommentsController < ApplicationController
     end
     redirect_to post_path(@post)
   end
+  
+  def destroy
+    #@comment.destroy
+    @post = Post.find(params[:post_id])
+    @comment.hide_comment
+    respond_to do |format|
+      #format.html { redirect_to posts_url, notice: 'Comment was successfully destroyed.' }
+      format.html { redirect_to post_path(@post) }
+      format.json { head :no_content }
+    end
+  end
  
   private
   
