@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   #root :to => "visitors#index"
   devise_for :users
-  resources :users
+  resources :users do
+    resources :contacts
+  end
   resources :posts do
     resources :comments
   end

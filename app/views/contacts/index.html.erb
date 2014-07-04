@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="row">
+    <h3>Listing contacts</h3>
+    <div class="column">
+      <table class="table">
+        <tbody>
+          <td>Name</td>
+          <td>Email</td>
+          <td>Content</td>
+          <td>Action</td>
+          <% @contacts.each do |contact| %>
+            <tr>
+              <%= render contact %>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div> 
+<!--<%# link_to 'Show', contact %>
+<%# link_to 'Edit', edit_contact_path(contact) %>
+<%# link_to 'Destroy', contact, method: :delete, data: { confirm: 'Are you sure?' }-->

@@ -1,0 +1,18 @@
+<td>
+  <%# link_to contact.email, user %>
+  <%= contact.name %>
+</td>
+<td>
+  <%# form_for(user) do |f| %>
+    <%# f.select(:role, User.roles.keys.map {|role| [role.titleize,role]}) %>
+    <%# f.submit 'Change Role', :class => 'button-xs' %>
+  <%# end %>
+  <%= contact.email %>
+</td>
+<td>
+  <%# link_to("Delete user", user_path(user), :data => { :confirm => "Are you sure?" }, :method => :delete, :class => 'button-xs') unless user == current_user %>
+  <%= contact.content %>
+</td>
+<td>
+  <%= link_to 'Show', user_contact_path(contact.user_id, contact.id), class: 'button-xs' %>
+</td>
