@@ -1,7 +1,7 @@
-<% new_mails = Contact.where(user_id: current_user.id).where(shown_count: 0).size %>
-<% red_new_mails = content_tag(:font, new_mails, color: 'red') %>
 <li><%= link_to "Posts", posts_path %></li>
 <% if user_signed_in? %>
+  <% new_mails = Contact.where(user_id: current_user.id).where(shown_count: 0).size %>
+  <% red_new_mails = content_tag(:font, new_mails, color: 'red') %>
   <% if current_user.admin? %>
   <%# if policy(User).index? 
 %>
