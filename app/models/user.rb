@@ -14,6 +14,10 @@ class User < ActiveRecord::Base
     flash[:notice] = "Welcome Back"
   end
   
+  def self.oldest
+    order(:id)
+  end
+  
   def user_comments(id)
     Comment.where(commenter_id: id)
   end

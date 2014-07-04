@@ -27,6 +27,8 @@
   <div class="field">
     <%= f.label :image_url, "Picture URL" %><br>
     <%= f.text_field :image_url, class: 'form-control' %>
+    <%= f.label :image, "or" %>
+    <%= f.file_field :image, class: 'form-control' %>
   </div>
   <div>
     <%# label :tags %><br>

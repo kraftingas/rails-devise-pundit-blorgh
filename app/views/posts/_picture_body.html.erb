@@ -1,4 +1,5 @@
 <p>
   <%= image_tag(post.image_url, size: "250x250") %>
+  <%= image_tag(post.image, size: "250x250") if post.image.present? %>
   <%= simple_format(post.text) %>
 </p>

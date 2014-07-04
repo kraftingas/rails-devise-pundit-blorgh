@@ -16,9 +16,11 @@
   </header>
   <!--<p><%# entry.body %></p>-->
   <%= entry.render_body(self) %>
-  <p>
-    <h3><%= link_to "#{ entry_size } comment#{ if entry_size != 1 then 's' end }", entry %></h3>
-  </p>
+  <div>
+    <h3><%= link_to "#{ entry_size } comment#{ if entry_size != 1 then 's' end }", entry, anchor: 'comments_block' %></h3>
+    <%# link_to "Comment", :action=>:show, :id=>lp.id, :anchor=> 'lessonplan_comments' 
+%>
+  </div>
   <% if user_signed_in? %>
     <% if current_user.admin? || current_user.id == entry.user_id %>
       <%= link_to 'Edit', edit_post_path(entry) %>

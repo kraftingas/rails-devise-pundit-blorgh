@@ -13,7 +13,7 @@ class UsersController < ApplicationController
     #end
     #authorize User
     #@users = UserPolicy::Scope.new(current_user, User).resolve
-    @users = policy_scope(User)
+    @users = policy_scope(User).oldest
   end
 
   def show
