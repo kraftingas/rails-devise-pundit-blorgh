@@ -1,5 +1,4 @@
-<!--<% comment_counter + 1 %>. --><b><%= comment.commenter %></b> (<%= comment.commenter_ip %>) at <%= comment.created_at %> 
+<%= comment_counter + 1 %>. <b><%= comment.commenter %></b> (<%= comment.commenter_ip %>) at <%= comment.created_at %> 
 <%# link_to 'Destroy', comment, method: :delete, data: { confirm: 'Are you sure?' } 
 %>
-<br>
-<%= comment.text %><br><br>
+<%= simple_format(comment.text) %><br>

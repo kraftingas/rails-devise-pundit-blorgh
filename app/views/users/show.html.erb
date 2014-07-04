@@ -1,5 +1,4 @@
-<h3><%= @user.name if @user.name %></h3> 
-<p><%= link_to "Contact #{@user.name}", new_user_contact_path(@user) %></p>
+<h3><%= @user.name if @user.name %> <small><%= link_to ">> Contact #{@user.name} <<", new_user_contact_path(@user) %></small></h3> 
 <div>
   <% image_tag @user.avatar.url %>
   <% image_tag @user.avatar.url(:medium) %>

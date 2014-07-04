@@ -12,7 +12,7 @@
   <p>
     <strong></strong>
     <%= image_tag(post.image_url, size: "250x250") if post.image_url.present? %>
-    <%= image_tag(post.image, size: "250x250") if post.image.present? %>
+    <%= cl_image_tag(post.image, size: "250x250", cloud_name: 'dlwsdtphd') if post.image.present? %>
     <%= simple_format(post.text) if post.text.present? %>
   </p>
   <div>
