@@ -27,6 +27,12 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
+    @user.avatar = params[:file]
+    #u.avatar = File.open('somewhere')
+    #u.save!
+    #u.avatar.url # => '/url/to/file.png'
+    #u.avatar.current_path # => 'path/to/file.png'
+    #u.avatar.identifier # => 'file.png'
     authorize @user
     if @user.update_attributes(secure_params)
       redirect_to users_path, :notice => "User updated."
@@ -51,7 +57,7 @@ class UsersController < ApplicationController
   private
 
   def secure_params
-    params.require(:user).permit(*policy(@user || User).permitted_attributes)
+    params.require(:user).permit(*policy(@user || User).permitted_attributes, :avatar)
   end
   
   def user_not_authorized

@@ -1,4 +1,9 @@
 class CommentsController < ApplicationController
+  before_action :set_comment, only: [:show, :edit, :update, :destroy]
+  
+  def edit
+    Comment.change_comment(@comment)
+  end
   
   def create
     @post = Post.find(params[:post_id])
@@ -14,6 +19,15 @@ class CommentsController < ApplicationController
   end
  
   private
+  
+  attr_reader :comment
+  helper_method :comment
+  
+  # Use callbacks to share common setup or constraints between actions.
+  def set_comment
+    @post = Post.find(params[:post_id])
+    @comment = Comment.find(params[:id])
+  end
   
   def comment_params
     params.require(:comment).permit(:text, :commenter, :commenter_ip, :commenter_id)

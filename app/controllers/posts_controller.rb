@@ -32,7 +32,22 @@ class PostsController < ApplicationController
   # POST /posts.json
   def create
     #@post = Post.new(post_params)
+    #u = User.new
+    #u.avatar = params[:file]
+    #u.avatar = File.open('somewhere')
+    #u.save!
+    #u.avatar.url # => '/url/to/file.png'
+    #u.avatar.current_path # => 'path/to/file.png'
+    #u.avatar.identifier # => 'file.png'
     @post = Taggable(blog).new_post(post_params)
+    #@post.image = params[:file]
+    Cloudinary::Uploader.upload(params[:image])
+    
+    #if params[:image_id].present?
+      #preloaded = Cloudinary::PreloadedFile.new(params[:image_id])         
+      #raise "Invalid upload signature" if !preloaded.valid?
+      #@post.image_id = preloaded.identifier
+    #end
 
     respond_to do |format|
       #if @post.save

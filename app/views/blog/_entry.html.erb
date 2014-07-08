@@ -2,9 +2,9 @@
 <% entry_size = entry.comments.size %>
 <article>
   <header>
-    <h2><%= link_to entry.title, entry %></h2>
+    <h2><%= content_tag(:small, content_tag(:span, 'New', class: "label label-warning"))  if entry.new_post?(entry.created_at) %> <%= link_to entry.title, entry %></h2>
     <%= entry.created_at %><br>
-    <small>By <%= link_to entry.author, entry.user %></small>
+    <small>By <%= link_to entry.author, entry.user, class: "underline" %></small>
     <%# simple_format(entry.text) 
 %>
     

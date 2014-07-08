@@ -73,6 +73,13 @@ class Exhibit < SimpleDelegator
     ]
   end
   
+    def new_post?(date)
+      if date > (Date.today - 6)
+        return true
+      end
+      false
+    end
+    
   private
   
   def partialize_name(name)

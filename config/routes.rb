@@ -10,4 +10,5 @@ Rails.application.routes.draw do
   
   root to: "blog#index"
   #mount Blorgh::Engine, at: "/blog"
+  mount Attachinary::Engine => "/attachinary"
 end

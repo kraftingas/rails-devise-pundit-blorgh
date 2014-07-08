@@ -1,11 +1,20 @@
 <% post = exhibit(post, self) %>
 <p id="notice"><%= notice %></p>
-<%# link_to "<< Previous", @previous if @previous.present? %><%= link_to "Next >>", @next if @next.present? %><br>
-<%= link_to '<< Previous', post_path(post.prev) if post.prev.present? %> |<%= link_to 'Up', post_path(post.up) if post.up %>| <%= link_to 'Next >>', post_path(post.next) if post.next.present? %>
+<%# link_to "<< Previous", @previous if @previous.present? %><%= link_to "Next >>", @next if @next.present? 
+%><br>
+
+  <!--<li class="previous disabled"><a href="#"> Previous</a></li>
+  <li class="next"><a href="#">Next </a></li>-->
+
+<ul class="pager">
+  <li><%= link_to "<< Previous", post_path(post.prev) if post.prev.present? %></li>
+  <li><%= link_to 'Up', post_path(post.up) if post.up %></li>
+  <li><%= link_to 'Next >>', post_path(post.next) if post.next.present? %></li>
+</ul>
 <br><br>
 <article>
   <header>
-    <h2><%= link_to post.title, post %></h2>
+    <h2><small><span class="label label-default">New</span></small> <%= link_to post.title, post %></h2>
     <%= post.created_at %><br>
     <small>By <%= link_to post.author, post.user %></small>
     <%# simple_format(post.text) 
@@ -19,13 +28,13 @@
   <%= post.render_body(self) %>
   <div id="comments_block">
     <h3>Comments</h3>
-    <%= button_tag "Oldest", {id: 'oldest_button', class: "button-xs active", onclick: "oldest();"} %>
-    <%= button_tag "Newest", {id: 'newest_button', class: "button-xs", onclick: "newest();"} %>
+    <%= button_tag "Oldest", {id: 'oldest_button', class: "button-xs", onclick: "oldest();"} %>
+    <%= button_tag "Newest", {id: 'newest_button', class: "button-xs active", onclick: "newest();"} %>
     <br><br>
     <%# link_to "Add tester", add_post_comments_path, remote: true 
 %>
-    <div id="oldest_comments"><%= render post.comments.oldest %></div>
-    <div id="newest_comments" class="comments"><%= render post.comments.newest %></div>
+    <div id="oldest_comments" class="comments"><%= render post.comments.oldest %></div>
+    <div id="newest_comments"><%= render post.comments.newest %></div>
     <%= render "comments/form" %>
   </div>
   <% if user_signed_in? %>

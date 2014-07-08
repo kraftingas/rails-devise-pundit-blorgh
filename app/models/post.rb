@@ -1,13 +1,16 @@
 class Post < ActiveRecord::Base
   LIMIT_DEFAULT = 10
-  has_many :comments, dependent: :destroy 
+  has_many :comments, dependent: :destroy
+  #has_many :attachinary_files
   #attr_accessor :author_name
   belongs_to :user #, class_name: "User"
   validates :title, presence: true
   #Blorgh.author_class.to_s
   attr_accessor :blog
-  has_attached_file :image, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/images/:style/missing.png"
-  validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
+  #has_attached_file :image, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/images/:style/missing.png"
+  #validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
+  has_attachment :image
+  #mount_uploader :image, ImageUploader
     
   #before_save :set_author
   
@@ -23,7 +26,7 @@ class Post < ActiveRecord::Base
   end
   
   def self.most_recent(limit=LIMIT_DEFAULT)
-    order("created_at DESC").limit(limit)
+    order("id DESC").limit(limit)
   end
   
   def self.first_before(id)

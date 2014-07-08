@@ -4,8 +4,14 @@ class User < ActiveRecord::Base
   #after_database_authentication :set_welcome_back
   has_many :posts
   has_many :contacts
-  has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/images/:style/missing.png"
-  validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
+  #has_many :attachinary_files
+  #has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/images/:style/missing.png"
+  #validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
+  has_attachment  :avatar, accept: [:jpg, :png, :gif]
+  #mount_uploader :avatar, AvatarUploader
+  #has_attachments :photos, maximum: 10
+
+  #validates :avatar, presence: true
 
   def set_default_role
     self.role ||= :vip
@@ -25,6 +31,9 @@ class User < ActiveRecord::Base
   
   def to_s
     name
+  end
+  
+  def avatar_changed?
   end
 
   # Include default devise modules. Others available are:

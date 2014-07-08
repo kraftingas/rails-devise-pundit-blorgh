@@ -2,12 +2,14 @@
   <div class="row">
     <h3>Listing contacts</h3>
     <div class="column">
-      <table class="table">
+      <table class="table table-striped">
         <tbody>
-          <td>Name</td>
-          <td>Registration Email</td>
-          <td>Content</td>
-          <td>Action</td>
+          <tr class="info">
+            <td>Name</td>
+            <td>Registration Email</td>
+            <td>Content</td>
+            <td>Action</td>
+          </tr>
           <% @contacts.each do |contact| %>
             <tr>
               <%= render contact %>
