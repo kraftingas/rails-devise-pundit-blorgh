@@ -6,13 +6,13 @@
 <% end %>
 <br>
 <% @posts.each do |post| %>
-  <h2><small><span class="label label-primary">New</span></small> <%= link_to post.title, post %></h2>
+  <h2><%= content_tag(:small, content_tag(:span, 'New', class: "label label-warning"))  if post.new_post?(post.created_at) %> <%= link_to post.title, post %></h2>
   <%= post.created_at %><br>
   <small>By <%= link_to post.author, post.user, class: "underline" %></small>
   <p>
     <strong></strong>
     <%= image_tag(post.image_url, size: "250x250") if post.image_url.present? %>
-    <%= cl_image_tag(post.image.path, size: "250x250") if post.image.present? %>
+    <%# cl_image_tag(post.image.path, size: "250x250") if post.image.present? %>
     <%# cl_image_tag(post.image_id, :crop => :fill, :width => 120, :height => 80) if post.image_id %>
     <%= simple_format(post.text) if post.text.present? %>
   </p>

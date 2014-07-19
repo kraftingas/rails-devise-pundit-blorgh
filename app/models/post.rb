@@ -9,7 +9,7 @@ class Post < ActiveRecord::Base
   attr_accessor :blog
   #has_attached_file :image, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/images/:style/missing.png"
   #validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
-  has_attachment :image
+  #has_attachment :image
   #mount_uploader :image, ImageUploader
     
   #before_save :set_author
@@ -58,6 +58,13 @@ class Post < ActiveRecord::Base
   def to_s
     title
   end
+    
+    def new_post?(date)
+      if date > (Date.today - 6)
+        return true
+      end
+      false
+    end
     
   private
     

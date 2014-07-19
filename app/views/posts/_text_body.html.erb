@@ -1,5 +1,5 @@
 <p>
-  <%= cl_image_tag(post.image.path, size: "250x250") if post.image.present? %>
+  <%# cl_image_tag(post.image.path, size: "250x250") if post.image.present? %>
   <%# cl_image_tag(post.image_id, :crop => :fill, :width => 120, :height => 80) if post.image_id %>
   <%= simple_format(post.text) %>
 </p>

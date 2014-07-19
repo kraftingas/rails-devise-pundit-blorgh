@@ -11,10 +11,9 @@
   <li><%= link_to 'Up', post_path(post.up) if post.up %></li>
   <li><%= link_to 'Next >>', post_path(post.next) if post.next.present? %></li>
 </ul>
-<br><br>
 <article>
   <header>
-    <h2><small><span class="label label-default">New</span></small> <%= link_to post.title, post %></h2>
+    <h2><%= content_tag(:small, content_tag(:span, 'New', class: "label label-warning"))  if post.new_post?(post.created_at) %> <%= link_to post.title, post %></h2>
     <%= post.created_at %><br>
     <small>By <%= link_to post.author, post.user %></small>
     <%# simple_format(post.text) 

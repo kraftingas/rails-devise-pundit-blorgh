@@ -41,7 +41,7 @@ class PostsController < ApplicationController
     #u.avatar.identifier # => 'file.png'
     @post = Taggable(blog).new_post(post_params)
     #@post.image = params[:file]
-    Cloudinary::Uploader.upload(params[:image])
+    #Cloudinary::Uploader.upload(params[:image])
     
     #if params[:image_id].present?
       #preloaded = Cloudinary::PreloadedFile.new(params[:image_id])         
