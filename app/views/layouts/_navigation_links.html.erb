@@ -1,23 +1,23 @@
-<li><%= link_to "Posts", posts_path %></li>
+<li><%= link_to t('Posts'), posts_path %></li>
 <% if user_signed_in? %>
   <% new_mails = Contact.where(user_id: current_user.id).where(shown_count: 0).size %>
   <% red_new_mails = content_tag(:font, new_mails, color: 'red') %>
-  <li><%= link_to "New Post...", new_post_path %></li>
+  <li><%= link_to "#{t('New_post')}...", new_post_path %></li>
   <% if current_user.admin? %>
   <%# if policy(User).index? 
 %>
-    <li><%= link_to 'Users', users_path %></li>
+    <li><%= link_to t('Users'), users_path %></li>
     <li><a href="#">Inbox <span class="badge">42</span></a></li>
   <% end %>
 <%# (if new_mails == 0 then new_mails else red_new_mails end) 
 %>
-  <li><%= link_to content_tag(:div, "Mail (#{ new_mails })"), user_contacts_path(current_user.id) %></li>
+  <li><%= link_to content_tag(:div, "#{t('Mail')} (#{ new_mails })"), user_contacts_path(current_user.id) %></li>
   <li><%= link_to current_user.name, user_path(current_user.id) %></li>
-  <li><%= link_to 'Edit account', edit_user_registration_path %></li>
-  <li><%= link_to 'Sign out', destroy_user_session_path, :method=>'delete' %></li>
+  <li><%= link_to t('Edit_account'), edit_user_registration_path %></li>
+  <li><%= link_to t('Log_out'), destroy_user_session_path, :method=>'delete' %></li>
 <% else %>
-  <li><%= link_to 'Sign in', new_user_session_path %></li>
-  <li><%= link_to 'Sign up', new_user_registration_path %></li>
+  <li><%= link_to t('Log_in'), new_user_session_path %></li>
+  <li><%= link_to t('Sign_up'), new_user_registration_path %></li>
 <% end %>
 <% if user_signed_in? %>
   

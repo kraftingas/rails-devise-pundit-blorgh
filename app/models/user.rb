@@ -12,6 +12,10 @@ class User < ActiveRecord::Base
   #has_attachments :photos, maximum: 10
 
   #validates :avatar, presence: true
+  
+  def to_param
+    "#{id}-#{name.parameterize}"
+  end
 
   def set_default_role
     self.role ||= :vip

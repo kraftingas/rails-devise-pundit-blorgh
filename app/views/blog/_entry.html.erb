@@ -2,13 +2,13 @@
 <% entry_size = entry.comments.size %>
 <article>
   <header>
-    <h2><%= content_tag(:small, content_tag(:span, 'New', class: "label label-warning"))  if entry.new_post?(entry.created_at) %> <%= link_to entry.title, entry %></h2>
+    <h2><%= content_tag(:small, content_tag(:span, t('New'), class: "label label-warning"))  if entry.new_post?(entry.created_at) %> <%= link_to entry.title, entry %></h2>
     <%= entry.created_at %><br>
-    <small>By <%= link_to entry.author, entry.user, class: "underline" %></small>
+    <small><%= t('By') %> <%= link_to entry.author, entry.user, class: "underline" %></small>
     <%# simple_format(entry.text) 
 %>
     
-    <p class="entry_tags"><b>Tags:</b>
+    <p class="entry_tags"><b><%= t('Tags') %>:</b>
       <!-- Taggable(entry).tags -->
       <span class="tags"><%# Taggable(entry).tags 
 %></span>
@@ -23,10 +23,10 @@
   </div>
   <% if user_signed_in? %>
     <% if current_user.admin? || current_user.id == entry.user_id %>
-      <%= link_to 'Edit', edit_post_path(entry) %>
+      <%= link_to t('Edit'), edit_post_path(entry) %>
     <% end %>
     <% if current_user.admin? %>
-      | <%= link_to 'Destroy', entry, method: :delete, data: { confirm: 'Are you sure?' } %>
+      | <%= link_to t('Destroy'), entry, method: :delete, data: { confirm: t('Are_you_sure') } %>
     <% end %>
   <% end %>
   <hr>

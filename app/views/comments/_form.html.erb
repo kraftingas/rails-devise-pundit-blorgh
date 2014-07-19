@@ -1,21 +1,21 @@
 <div class="authform">
-<br><strong>New comment</strong>
+<br><strong><%= t('New_comment') %></strong>
 <%= form_for [@post, @post.comments.build] do |f| %>
   <p class="form-group">
     <% if user_signed_in? %>
-      <%= f.label :commenter, "Name" %>: <%= current_user %><br>
+      <%= f.label :commenter, t('Name') %>: <%= current_user %><br>
       <%= f.hidden_field :commenter, value: current_user %>
     <% else %>
-      <%= f.label :commenter, "Name" %><br>
+      <%= f.label :commenter, t('Name') %><br>
       <%= f.text_field :commenter, class: 'form-control' %>
     <% end %>
   </p>
   <p class="form-group">
-    <%= f.label :text %><br>
+    <%= f.label :text, t('Text') %><br>
     <%= f.text_area :text, class: 'form-control', rows: 5 %>
   </p>
   <%= f.hidden_field :commenter_ip, value: request.remote_ip %>
   <%= f.hidden_field :commenter_id, value: current_user.id  if current_user %>
-  <%= f.submit 'Submit', class: 'button right' %>
+  <%= f.submit t('Submit'), class: 'button right' %>
 <% end %>
 </div>

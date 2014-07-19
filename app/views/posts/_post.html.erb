@@ -7,18 +7,18 @@
   <li class="next"><a href="#">Next </a></li>-->
 
 <ul class="pager">
-  <li><%= link_to "<< Previous", post_path(post.prev) if post.prev.present? %></li>
-  <li><%= link_to 'Up', post_path(post.up) if post.up %></li>
-  <li><%= link_to 'Next >>', post_path(post.next) if post.next.present? %></li>
+  <li><%= link_to "<< #{t('Previous')}", post_path(post.prev) if post.prev.present? %></li>
+  <li><%= link_to t('Up'), post_path(post.up) if post.up %></li>
+  <li><%= link_to "#{t('Next')} >>", post_path(post.next) if post.next.present? %></li>
 </ul>
 <article>
   <header>
-    <h2><%= content_tag(:small, content_tag(:span, 'New', class: "label label-warning"))  if post.new_post?(post.created_at) %> <%= link_to post.title, post %></h2>
+    <h2><%= content_tag(:small, content_tag(:span, t('New'), class: "label label-warning"))  if post.new_post?(post.created_at) %> <%= link_to post.title, post %></h2>
     <%= post.created_at %><br>
-    <small>By <%= link_to post.author, post.user %></small>
+    <small><%= t('By') %> <%= link_to post.author, post.user %></small>
     <%# simple_format(post.text) 
 %>
-    <div class="entry_tags"><b>Tags:</b> 
+    <div class="entry_tags"><b><%= t('Tags') %>:</b> 
       <%# post.tags #.render(self) 
 %>
     </div>
@@ -26,9 +26,9 @@
   <!--<p><%# post.body %></p>-->
   <%= post.render_body(self) %>
   <div id="comments_block">
-    <h3>Comments</h3>
-    <%= button_tag "Oldest", {id: 'oldest_button', class: "button-xs", onclick: "oldest();"} %>
-    <%= button_tag "Newest", {id: 'newest_button', class: "button-xs active", onclick: "newest();"} %>
+    <h3><%= t('Comments') %></h3>
+    <%= button_tag t('Oldest'), {id: 'oldest_button', class: "button-xs", onclick: "oldest();"} %>
+    <%= button_tag t('Newest'), {id: 'newest_button', class: "button-xs active", onclick: "newest();"} %>
     <br><br>
     <%# link_to "Add tester", add_post_comments_path, remote: true 
 %>
@@ -38,12 +38,12 @@
   </div>
   <% if user_signed_in? %>
     <% if current_user.admin? || current_user.id == post.user_id %>
-      <%= link_to 'Edit', edit_post_path(post) %> |
+      <%= link_to t('Edit'), edit_post_path(post) %> |
     <% end %>
     <% if current_user.admin? %>
-      <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %> |
+      <%= link_to t('Destroy'), post, method: :delete, data: { confirm: t('Are_you_sure') } %> |
     <% end %>
   <% end %>
-  <%= link_to 'Back', posts_path %>
+  <%= link_to t('Back'), posts_path %>
   <hr>
 </article>

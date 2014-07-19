@@ -1,14 +1,14 @@
 <div class="container">
   <div class="row">
-    <h3>Listing contacts</h3>
+    <h3><%= t('Listing_contacts') %></h3>
     <div class="column">
       <table class="table table-striped">
         <tbody>
           <tr class="info">
-            <td>Name</td>
-            <td>Registration Email</td>
-            <td>Content</td>
-            <td>Action</td>
+            <td><%= t('Name') %></td>
+            <td><%= t('Registration_email') %></td>
+            <td><%= t('Content') %></td>
+            <td><%= t('Action') %></td>
           </tr>
           <% @contacts.each do |contact| %>
             <tr>

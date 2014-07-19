@@ -2,8 +2,8 @@
 <html>
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= content_for?(:title) ? yield(:title) : "Blog" %></title>
-    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Blog" %>">
+    <title><%= content_for?(:title) ? yield(:title) : t('Website_title') %></title>
+    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : t('Website_title') %>">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
@@ -17,7 +17,7 @@
       <div class="authform_body">
          <%= render 'layouts/messages' %>
          <%= yield %>
-        <h4>Tags</h4>
+        <h4><%= t('Tags') %></h4>
         <nav>
           <ul>
             <%# render partial: "/tags/tag_item", collection: @blog.entries 

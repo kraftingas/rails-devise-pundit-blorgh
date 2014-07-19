@@ -12,21 +12,21 @@
     </div>
   <% end %>
   <div class="field">
-    <%= f.label :author_name %>: <%= current_user %><br>
+    <%= f.label :author_name, t('Author_name') %>: <%= current_user %><br>
     <%= f.hidden_field :user_id, value: current_user.id %>
   </div>
   <div class="field">
-    <%= f.label :title %><br>
+    <%= f.label :title, t('Title') %><br>
     <%= f.text_field :title, class: 'form-control' %>
   </div>
   <div class="field">
-    <%= f.label :text %><br>
+    <%= f.label :text, t('Text') %><br>
     <%= f.text_area :text, class: 'form-control', rows: 5 %>
   </div>
   <div class="field">
-    <%= f.label :image_url, "Picture URL" %><br>
+    <%= f.label :image_url, t('Image_url') %><br>
     <%= f.text_field :image_url, class: 'form-control' %>
-    <%= f.label :image, "or" %>
+    <%= f.label :image, t('or') %>
     <%# f.file_field :image, class: 'form-control' %>
     <%# f.cl_image_upload(:image_id) %>
     <%# f.attachinary_file_field :image, class: 'form-control' 
@@ -38,7 +38,7 @@
 %>
   </div>
   <div class="actions">
-    <%= f.submit 'Submit', class: 'button right' %>
+    <%= f.submit t('Submit'), class: 'button right' %>
   </div>
 <% end %>
 </div>

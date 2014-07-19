@@ -1,4 +1,4 @@
-<h3><%= @user.name if @user.name %> <small><%= link_to ">> Contact #{@user.name} <<", new_user_contact_path(@user) unless current_user == @user %></small></h3> 
+<h3><%= @user.name if @user.name %> <small><%= link_to ">> #{t('Contact_with')} #{@user.name} <<", new_user_contact_path(@user) unless current_user == @user %></small></h3> 
 <div>
   <%# image_tag @user.avatar.url %>
   <%# image_tag @user.avatar.url(:medium) %>
@@ -8,9 +8,9 @@
 <!--<p>Name: <%# @user.name if @user.name %></p>-->
 <!--<p>Email: <% @user.email if @user.email %></p>
 <p>Role: <% @user.role.upcase if @user.role %></p>-->
-<p>Last sign in at: <%= @user.last_sign_in_at if @user.last_sign_in_at %></p>
+<p><%= t('Last_sign_in_at') %>: <%= @user.last_sign_in_at if @user.last_sign_in_at %></p>
 <br>
-<p>Number of comments: <%= @user_comments %></p>
+<p><%= t('Number_of_comments') %>: <%= @user_comments %></p>
 <!--<p>Last sign in from: <% @user.last_sign_in_ip if @user.last_sign_in_ip %></p>-->
 <div><%= render 'posts/user_posts' %></div>
 <div><%# render '' 

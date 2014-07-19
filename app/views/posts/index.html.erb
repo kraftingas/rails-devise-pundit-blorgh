@@ -1,14 +1,14 @@
-<h1>Posts</h1>
+<h1><%= t('Posts') %></h1>
 <% if user_signed_in? %>
   <% if current_user.admin? || current_user.vip? %>
-    <%= link_to "New Post", new_post_path, class: "underline" %>
+    <%= link_to t('New_post'), new_post_path, class: "underline" %>
   <% end %>
 <% end %>
 <br>
 <% @posts.each do |post| %>
-  <h2><%= content_tag(:small, content_tag(:span, 'New', class: "label label-warning"))  if post.new_post?(post.created_at) %> <%= link_to post.title, post %></h2>
+  <h2><%= content_tag(:small, content_tag(:span, t('New'), class: "label label-warning"))  if post.new_post?(post.created_at) %> <%= link_to post.title, post %></h2>
   <%= post.created_at %><br>
-  <small>By <%= link_to post.author, post.user, class: "underline" %></small>
+  <small><%= t('By') %> <%= link_to post.author, post.user, class: "underline" %></small>
   <p>
     <strong></strong>
     <%= image_tag(post.image_url, size: "250x250") if post.image_url.present? %>
@@ -18,7 +18,7 @@
   </p>
   <div>
     <% if post.comments.size != 0 %>
-      <h3>Comments</h3>
+      <h3><%= t('Comments') %></h3>
       <%= render post.comments.newest %>
     <% end %>
   </div>
@@ -26,13 +26,13 @@
   <%# link_to 'Show', post %>
   <% if user_signed_in? %>
     <% if current_user.admin? || current_user.id == post.user_id %>
-      <%= link_to 'Edit', edit_post_path(post) %>
+      <%= link_to t('Edit'), edit_post_path(post) %>
     <% end %>
     <% if current_user.admin? %>
-      | <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %>
+      | <%= link_to t('Destroy'), post, method: :delete, data: { confirm: t('Are_you_sure') } %>
     <% end %>
   <% end %>
   <hr>
 <% end %>
 <br><br>
-<%= link_to "<< Previous", @previous if @previous.present? %> | <%= link_to "Next >>", @next if @next.present? %>
+<%= link_to "<< #{t('Previous')}", @previous if @previous.present? %> | <%= link_to "#{t('Next')} >>", @next if @next.present? %>

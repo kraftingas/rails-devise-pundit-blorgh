@@ -13,6 +13,9 @@ class Post < ActiveRecord::Base
   #mount_uploader :image, ImageUploader
     
   #before_save :set_author
+  def to_param
+    "#{id}-#{title.parameterize}"
+  end
   
   def author
     User.select(:name).find_by(id: user_id)

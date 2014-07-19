@@ -1,4 +1,4 @@
-<h3>Newest Posts</h3>
+<h3><%= t('Newest_posts') %></h3>
 <% @posts.reverse_each do |post| %>
 <h5><%= link_to post.title, post %> (<%= post.comments.size %>)</h5>
 <% end %>

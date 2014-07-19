@@ -2,34 +2,34 @@
 <%= form_for [@user, @user.contacts.build] do |f| %>
 
   <div class="field">
-    <%= f.label :user_id, "Contact with #{@user}" %><br>
+    <%= f.label :user_id, "#{t('Contact_with')} #{@user}" %><br>
     <%= f.hidden_field :user_id %>
   </div>
   <% if user_signed_in? %>
     <div class="field">
-      <%= f.label :name %>: <%= current_user %>
+      <%= f.label :name, t('Name') %>: <%= current_user %>
       <%= f.hidden_field :name, value: current_user %>
     </div>
     <div class="field">
-      <%= f.label :email %>: <%= current_user.email %>
+      <%= f.label :email, t('Registration_email') %>: <%= current_user.email %>
       <%= f.hidden_field :email, value: current_user.email %>
     </div>
   <% else %>
     <div class="field">
-      <%= f.label :name %><br>
+      <%= f.label :name, t('Name') %><br>
       <%= f.text_field :name, class: 'form-control' %>
     </div>
     <div class="field">
-      <%= f.label :email %><br>
+      <%= f.label :email, t('Registration_email') %><br>
       <%= f.text_field :email, class: 'form-control' %>
     </div>
   <% end %>
   <div class="field">
-    <%= f.label :content %><br>
+    <%= f.label :content, t('Content') %><br>
     <%= f.text_area :content, class: 'form-control' %>
   </div>
   <div class="actions">
-    <%= f.submit "Submit", class: 'button right' %>
+    <%= f.submit t('Submit'), class: 'button right' %>
   </div>
 <% end %>
 </div>

@@ -3,7 +3,7 @@
 <br>
 <% if user_signed_in? %>
   <% if current_user.admin? || current_user.vip? %>
-    <%= link_to "New Post", new_post_path, class: "underline" %>
+    <%= link_to t('New_post'), new_post_path, class: "underline" %>
   <% end %>
 <% end %>
 <br>

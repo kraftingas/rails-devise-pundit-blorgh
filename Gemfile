@@ -14,10 +14,10 @@ gem 'bootstrap-sass'
 gem 'devise'
 gem 'pundit'
 group :development do
-  gem 'better_errors'
-  gem 'binding_of_caller', :platforms=>[:mri_21]
   gem 'quiet_assets'
   gem 'rails_layout'
+  gem 'better_errors', '~> 1.1.0'
+  gem 'binding_of_caller', '~> 0.7.2'
 end
 group :development, :test do
   gem 'factory_girl_rails'
