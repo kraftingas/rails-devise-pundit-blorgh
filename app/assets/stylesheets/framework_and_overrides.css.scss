@@ -1,6 +1,24 @@
 // import the CSS framework
 @import "bootstrap";
 
+hr {
+  color: #333;
+  background-color: #333;
+  height: 1px;
+}
+a.underline {
+  /*color: #1C3396;*/
+  &:visited {
+    color: #1E295C;
+  }
+  text-decoration: underline;
+}
+p, ol, ul, td, li {
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size: 13px;
+  line-height: 18px;
+}
+
 // make all images responsive by default
 img {
   @extend .img-responsive;
@@ -90,16 +108,4 @@ section {
 }
 .comments {
   display: none
-}
-hr {
-  color: #333;
-  background-color: #333;
-  height: 1px;
-}
-a.underline {
-  /*color: #1C3396;
-  &:visited {
-    color: #1E295C;
-  }*/
-  text-decoration: underline;
 }
