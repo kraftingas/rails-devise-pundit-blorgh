@@ -1,4 +1,7 @@
 class Post < ActiveRecord::Base
+  extend FriendlyId
+  friendly_id :title, use: :slugged
+  
   LIMIT_DEFAULT = 10
   has_many :comments, dependent: :destroy
   #has_many :attachinary_files
@@ -13,9 +16,9 @@ class Post < ActiveRecord::Base
   #mount_uploader :image, ImageUploader
     
   #before_save :set_author
-  def to_param
-    "#{id}-#{title.parameterize}"
-  end
+#   def to_param
+#     "#{id}-#{title.parameterize}"
+#   end
   
   def author
     User.select(:name).find_by(id: user_id)

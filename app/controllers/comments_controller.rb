@@ -1,12 +1,13 @@
 class CommentsController < ApplicationController
+  respond_to :html, :json
   before_action :set_comment, only: [:show, :edit, :update, :destroy]
   
   def edit
-    Comment.change_comment(@comment)
+#     Comment.change_comment(@comment)
   end
   
   def create
-    @post = Post.find(params[:post_id])
+    @post = Post.friendly.find(params[:post_id])
     @comment = @post.comments.create(comment_params)
     if @comment.to_s == ''
       flash[:alert] = "Comment can't be blank!"
@@ -17,6 +18,18 @@ class CommentsController < ApplicationController
     end
     redirect_to post_path(@post)
   end
+  
+  def update
+    respond_to do |format|
+      if @coment.update(comment_params)
+        format.html { redirect_to @post, notice: 'Comment was successfully updated.' }
+        format.json { render :show, status: :ok, location: @post }
+      else
+        format.html { render :edit }
+        format.json { render json: @post.errors, status: :unprocessable_entity }
+      end
+    end
+  end
  
   private
   
@@ -25,7 +38,7 @@ class CommentsController < ApplicationController
   
   # Use callbacks to share common setup or constraints between actions.
   def set_comment
-    @post = Post.find(params[:post_id])
+    @post = Post.friendly.find(params[:post_id])
     @comment = Comment.find(params[:id])
   end
   

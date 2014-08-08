@@ -19,6 +19,19 @@
         </div>
         <button type="submit" class="btn btn-default"><%= t('Submit') %></button>
       </form>
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= t('Language') %><span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li class="language_changer" onclick="KLIK('lt');"><a href="">LT</a></li>
+            <li class="language_changer" onclick="KLIK('en');"><a href="">EN</a></li>
+            <li class="disabled"><a href="">PL</a></li>
+            <li class="disabled"><a href="">RU</a></li>
+            <li class="divider"></li>
+            <li><a href="#"><%= t('Suggest') %></a></li>
+          </ul>
+        </li>
+      </ul>
     </div>
   </div>
 </nav>

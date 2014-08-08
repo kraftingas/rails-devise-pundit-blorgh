@@ -1,5 +1,6 @@
 <div class="authform">
-<br><strong><%= t('New_comment') %></strong>
+<br><strong><%# t('New_comment') 
+%></strong>
 <%= form_for [@post, @post.comments.build] do |f| %>
   <p class="form-group">
     <% if user_signed_in? %>

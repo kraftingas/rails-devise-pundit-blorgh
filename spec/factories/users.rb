@@ -7,6 +7,14 @@ FactoryGirl.define do
     trait :admin do
       role 'admin'
     end
+    
+    trait :user do
+      role 'user'
+    end
+    
+    trait :vip do
+      role 'vip'
+    end
 
   end
 end

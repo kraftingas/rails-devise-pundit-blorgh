@@ -10,11 +10,17 @@ class User < ActiveRecord::Base
   has_attachment  :avatar, accept: [:jpg, :png, :gif]
   #mount_uploader :avatar, AvatarUploader
   #has_attachments :photos, maximum: 10
+   attr_accessor :country_code
 
   #validates :avatar, presence: true
   
   def to_param
     "#{id}-#{name.parameterize}"
+  end
+  
+  def country_name
+    country = ISO3166::Country[country_code]
+    country.translations[I18n.locale.to_s] || country.name
   end
 
   def set_default_role

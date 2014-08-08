@@ -36,3 +36,5 @@ gem "paperclip", "~> 4.1"
 gem 'cloudinary'
 gem 'attachinary'
 gem 'carrierwave'
+gem 'friendly_id', '~> 5.0.4'
+gem 'route_translator', '~> 3.2.4'

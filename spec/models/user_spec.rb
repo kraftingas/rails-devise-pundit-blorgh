@@ -10,4 +10,7 @@ describe User do
     expect(@user.email).to match 'user@example.com'
   end
 
+#   it "#avatar" do
+#   end
+  
 end

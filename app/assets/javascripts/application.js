@@ -22,4 +22,4 @@
 //= require cloudinary/jquery.cloudinary
 //= require attachinary
 
-$('.attachinary-input').attachinary()
+$('.attachinary-input').attachinary();

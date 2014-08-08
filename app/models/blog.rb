@@ -13,11 +13,11 @@ class Blog #< ActiveRecord::Base
   end
   
   def title
-    "Watching Paint Dry"
+    I18n.t 'blog_title'
   end
   
   def subtitle
-    "The trusted source for drying paint news & opinion"
+    I18n.t 'blog_subtitle'
   end
   
   def new_post(*args)
@@ -43,7 +43,12 @@ class Blog #< ActiveRecord::Base
   end
   
   def post(id)
-    entries.find_by_id(id)
+    i = id.to_i
+    if i.is_a?(Integer) && i != 0
+      entries.find_by_id(i)
+    else
+      entries.find_by_slug(id)
+    end
   end
   
   def tags
