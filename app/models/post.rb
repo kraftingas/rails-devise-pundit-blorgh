@@ -32,7 +32,7 @@ class Post < ActiveRecord::Base
   end
   
   def self.most_recent(limit=LIMIT_DEFAULT)
-    order("id DESC").limit(limit)
+    order("id DESC") #.limit(limit)
   end
   
   def self.first_before(id)

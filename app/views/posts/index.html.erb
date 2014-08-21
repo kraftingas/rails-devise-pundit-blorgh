@@ -6,7 +6,7 @@
 <% end %>
 <br>
 <% @posts.each do |post| %>
-  <h2><%= content_tag(:small, content_tag(:span, t('New'), class: "label label-warning"))  if post.new_post?(post.created_at) %> <%= link_to post.title, post %></h2>
+  <h2><%= content_tag(:small, content_tag(:span, t('New'), class: "label label-warning")) if post.new_post?(post.created_at) %> <%= link_to post.title, post %></h2>
   <%= post.created_at %><br>
   <small><%= t('By') %> <%= link_to post.author, post.user, class: "underline" %></small>
   <p>
@@ -17,12 +17,13 @@
     <%= simple_format(post.text) if post.text.present? %>
   </p>
   <div>
+    <h3><%= link_to "#{ post.comments.size } comment#{ if post.comments.size != 1 then 's' end }", post, anchor: 'comments_block' %></h3>
     <% if post.comments.size != 0 %>
-      <h3><%= t('Comments') %></h3>
-      <%= render post.comments.newest %>
+      <h3><%# t('Comments') 
+  %></h3>
+      <%# render post.comments.newest %>
     <% end %>
   </div>
-  <br><br>
   <%# link_to 'Show', post %>
   <% if user_signed_in? %>
     <% if current_user.admin? || current_user.id == post.user_id %>
@@ -35,4 +36,4 @@
   <hr>
 <% end %>
 <br><br>
-<%= link_to "<< #{t('Previous')}", @previous if @previous.present? %> | <%= link_to "#{t('Next')} >>", @next if @next.present? %>
+<%= will_paginate @posts, renderer: BootstrapPagination::Rails %>
